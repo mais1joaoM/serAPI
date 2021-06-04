@@ -1,6 +1,7 @@
 import { getCustomRepository, Repository } from "typeorm"
 import { Calculation } from "../entities/Calculation"
 import { Company } from "../entities/Company"
+import { PdfGenerator } from "../pdfBuilder"
 import { CalculationsRepository } from "../repositories/CalculationsRepository"
 import { CompaniesRepository } from "../repositories/CompaniesRepository"
 
@@ -114,6 +115,10 @@ class CalculationsService{
             })
     
             await this.calculationsRepository.save(result)
+
+            const pdfGenerator = new PdfGenerator
+
+            await pdfGenerator.CreatePdf(result)
     
             return result
 

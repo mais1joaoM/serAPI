@@ -3,7 +3,7 @@ import pdf from "html-pdf";
 
 class PdfGenerator{
 
-    async createPdf(){
+    async CreatePdf(result){
 
         const contents = `
 
